@@ -38,16 +38,25 @@ app.post("/", function(req, res){
   request(options, function(error, response, body){
     if (error) {
       console.log(error);
-      res.send("<h1>Oops, something went wrong.</h1>");
+      res.sendFile(__dirname + "/failure.html");
     }else {
       console.log(response.statusCode);
-      res.send("<h1>You have successfully subscribed!</h1>");
+      if (response.statusCode == "200") {
+        res.sendFile(__dirname + "/success.html");
+      }else {
+        res.sendFile(__dirname + "/failure.html");
+      }
+
     }
   });
 
   //my API key 4edd981836987cc4f717811d40850a8d-us4
   //audience id: 08725bf4ec
 });
+
+app.get("/failure", function(req, res){
+  res.redirect("/");
+})
 
 app.listen("3000", function(){
   console.log("Server is running on port 3000");
