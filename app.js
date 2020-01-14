@@ -29,7 +29,7 @@ app.post("/", function(req, res){
     url : "https://us4.api.mailchimp.com/3.0/lists/08725bf4ec/members",
     method: "POST",
     headers:{
-      Authorization: "aziza 4edd981836987cc4f717811d40850a8d-us4",
+      Authorization: "aziza 2aeeedba17f56cef5eee1abc9b971f0e-us4",
       "Content-Type": "application/json"
     },
     body: jsonData
@@ -50,7 +50,7 @@ app.post("/", function(req, res){
     }
   });
 
-  //my API key 4edd981836987cc4f717811d40850a8d-us4
+  //my API key 2aeeedba17f56cef5eee1abc9b971f0e-us4
   //audience id: 08725bf4ec
 });
 
@@ -58,6 +58,6 @@ app.get("/failure", function(req, res){
   res.redirect("/");
 })
 
-app.listen("3000", function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Server is running on port 3000");
 })
